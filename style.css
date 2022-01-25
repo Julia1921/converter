@@ -1,0 +1,22 @@
+.text-field__input{
+  display: inline-block;
+  width: 70%;
+  height: calc(2.25rem + 2px);
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #bdbdbd;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.selected{
+    width: 30%;
+}
+form{
+    display: flex;
+    justify-content: space-between;
+}
