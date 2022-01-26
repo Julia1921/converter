@@ -10,10 +10,10 @@
             return response.json()
           })
           .then((data) => {
-            let response = data.symbols
+            let abbreviation = data.symbols
             for( key in response){
-              valueCurr.options[valueCurr.options.length] = new Option( key, response[key].code);
-              resultCurr.options[resultCurr.options.length]= new Option( key, response[key].code);
+              valueCurr.options[valueCurr.options.length] = new Option( key, abbreviation[key].code);
+              resultCurr.options[resultCurr.options.length]= new Option( key, abbreviation[key].code);
             }           
           })
           fetch('https://api.exchangerate.host/latest?base=RUB&places=4')
@@ -21,20 +21,19 @@
             return response.json()
           })
           .then((data) => {
-            let repo = data.rates
-            console.log(repo)
+            let exchangeRates = data.rates
 
             val.addEventListener('input', () => {
-              result.value = (val.value/repo[valueCurr.value]*repo[resultCurr.value]).toFixed(4)
+              result.value = (val.value/exchangeRates[valueCurr.value]*exchangeRates[resultCurr.value]).toFixed(4)
             })
             result.addEventListener('input', () => {
-              val.value = (result.value/repo[resultCurr.value]*repo[valueCurr.value]).toFixed(4)
+              val.value = (result.value/exchangeRates[resultCurr.value]*exchangeRates[valueCurr.value]).toFixed(4)
             })
             resultCurr.addEventListener('change', () => {
-              result.value = (val.value/repo[valueCurr.value]*repo[resultCurr.value]).toFixed(4)
+              result.value = (val.value/exchangeRates[valueCurr.value]*exchangeRates[resultCurr.value]).toFixed(4)
             })
             valueCurr.addEventListener('change', () => {
-              result.value = (val.value/repo[valueCurr.value]*repo[resultCurr.value]).toFixed(4)
+              result.value = (val.value/exchangeRates[valueCurr.value]*exchangeRates[resultCurr.value]).toFixed(4)
             })
           })
 }        
