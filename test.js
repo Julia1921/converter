@@ -11,7 +11,7 @@
           })
           .then((data) => {
             let abbreviation = data.symbols
-            for( key in response){
+            for( key in abbreviation){
               valueCurr.options[valueCurr.options.length] = new Option( key, abbreviation[key].code);
               resultCurr.options[resultCurr.options.length]= new Option( key, abbreviation[key].code);
             }           
@@ -22,19 +22,23 @@
           })
           .then((data) => {
             let exchangeRates = data.rates
+            function formula() {
+              result.value = Math.round((val.value/exchangeRates[valueCurr.value]*exchangeRates[resultCurr.value])*10000)/10000
+            }
+            function inversionFormula() {
+              val.value = Math.round((result.value/exchangeRates[resultCurr.value]*exchangeRates[valueCurr.value])*10000)/10000
+            }
 
-            val.addEventListener('input', () => {
-              result.value = (val.value/exchangeRates[valueCurr.value]*exchangeRates[resultCurr.value]).toFixed(4)
-            })
-            result.addEventListener('input', () => {
-              val.value = (result.value/exchangeRates[resultCurr.value]*exchangeRates[valueCurr.value]).toFixed(4)
-            })
-            resultCurr.addEventListener('change', () => {
-              result.value = (val.value/exchangeRates[valueCurr.value]*exchangeRates[resultCurr.value]).toFixed(4)
-            })
-            valueCurr.addEventListener('change', () => {
-              result.value = (val.value/exchangeRates[valueCurr.value]*exchangeRates[resultCurr.value]).toFixed(4)
-            })
+            result.addEventListener('input', inversionFormula)
+            val.addEventListener('input', formula)
+            resultCurr.addEventListener('change', formula)
+            valueCurr.addEventListener('change', formula)
+            // resultCurr.addEventListener('change', () => {
+            //   result.value = (val.value/exchangeRates[valueCurr.value]*exchangeRates[resultCurr.value]).toFixed(4)
+            // })
+            // valueCurr.addEventListener('change', () => {
+            //   result.value = (val.value/exchangeRates[valueCurr.value]*exchangeRates[resultCurr.value]).toFixed(4)
+            // })
           })
 }        
 
