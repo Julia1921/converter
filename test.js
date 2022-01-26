@@ -16,25 +16,26 @@
               resultCurr.options[resultCurr.options.length]= new Option( key, response[key].code);
             }           
           })
-          fetch('https://api.exchangerate.host/latest?base=RUB')
+          fetch('https://api.exchangerate.host/latest?base=RUB&places=4')
           .then((response) => {
             return response.json()
           })
           .then((data) => {
             let repo = data.rates
+            console.log(repo)
 
             val.addEventListener('input', () => {
-              result.value = val.value/repo[valueCurr.value]*repo[resultCurr.value]
+              result.value = (val.value/repo[valueCurr.value]*repo[resultCurr.value]).toFixed(4)
+            })
+            result.addEventListener('input', () => {
+              val.value = (result.value/repo[resultCurr.value]*repo[valueCurr.value]).toFixed(4)
             })
             resultCurr.addEventListener('change', () => {
-              result.value = val.value/repo[valueCurr.value]*repo[resultCurr.value]
+              result.value = (val.value/repo[valueCurr.value]*repo[resultCurr.value]).toFixed(4)
             })
             valueCurr.addEventListener('change', () => {
-              result.value = val.value/repo[valueCurr.value]*repo[resultCurr.value]
+              result.value = (val.value/repo[valueCurr.value]*repo[resultCurr.value]).toFixed(4)
             })
-           })
-
-
-
+          })
 }        
 
