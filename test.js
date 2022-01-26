@@ -33,12 +33,6 @@
             val.addEventListener('input', formula)
             resultCurr.addEventListener('change', formula)
             valueCurr.addEventListener('change', formula)
-            // resultCurr.addEventListener('change', () => {
-            //   result.value = (val.value/exchangeRates[valueCurr.value]*exchangeRates[resultCurr.value]).toFixed(4)
-            // })
-            // valueCurr.addEventListener('change', () => {
-            //   result.value = (val.value/exchangeRates[valueCurr.value]*exchangeRates[resultCurr.value]).toFixed(4)
-            // })
           })
 }        
 
