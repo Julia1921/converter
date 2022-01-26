@@ -1,5 +1,5 @@
  {
-        let val1 = document.getElementById("convertor")
+        let val = document.getElementById("convertor")
         let result = document.getElementById("result")
         let resultCurr = document.getElementById("currRes")
         let valueCurr = document.getElementById("currVal")
@@ -22,8 +22,19 @@
           })
           .then((data) => {
             let repo = data.rates
-            console.log(repo)
-          })
+
+            val.addEventListener('input', () => {
+              result.value = val.value/repo[valueCurr.value]*repo[resultCurr.value]
+            })
+            resultCurr.addEventListener('change', () => {
+              result.value = val.value/repo[valueCurr.value]*repo[resultCurr.value]
+            })
+            valueCurr.addEventListener('change', () => {
+              result.value = val.value/repo[valueCurr.value]*repo[resultCurr.value]
+            })
+           })
+
+
 
 }        
 
