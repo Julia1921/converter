@@ -5,14 +5,22 @@
         let valueCurr = document.getElementById("currVal")
         let exchangeRates
 
-        let exchange = function exchange (amount, valueCur, resultCur){
+        function exchange (amount, valueCur, resultCur){
           return ( Math.round((amount/valueCur*resultCur)*10000)/10000)
         };
-        // result.addEventListener('input', res(result.value,exchangeRates[resultCurr.value],exchangeRates[valueCurr.value]))
-        // val.addEventListener('input', res(val.value, exchangeRates[valueCurr.value], exchangeRates[resultCurr.value]))
-        // resultCurr.addEventListener('change', res(val.value, exchangeRates[valueCurr.value], exchangeRates[resultCurr.value]))
-        // valueCurr.addEventListener('change', res(val.value, exchangeRates[valueCurr.value], exchangeRates[resultCurr.value]))
 
+        result.addEventListener('input', () => {
+          val.value = exchange(result.value,exchangeRates[resultCurr.value],exchangeRates[valueCurr.value])
+        })
+        val.addEventListener('input',() => {
+          result.value = exchange(val.value, exchangeRates[valueCurr.value], exchangeRates[resultCurr.value])
+        })
+        resultCurr.addEventListener('change', () => {
+          result.value = exchange(val.value, exchangeRates[valueCurr.value], exchangeRates[resultCurr.value])
+        })
+        valueCurr.addEventListener('change', () => {
+          result.value = exchange(val.value, exchangeRates[valueCurr.value], exchangeRates[resultCurr.value])
+        })
 
          fetch('https://api.exchangerate.host/symbols')
           .then((response) => {
@@ -25,23 +33,13 @@
               resultCurr.options[resultCurr.options.length]= new Option( key, abbreviation[key].code);
             }           
           })
-          exchangeRates = fetch('https://api.exchangerate.host/latest?base=RUB&places=4')
+         fetch('https://api.exchangerate.host/latest?base=RUB&places=4')
           .then((response) => {
             return response.json()
           })
           .then((data) => {
+            exchangeRates = data.rates
           })
-          console.log(exchangeRates)
-  
 }        
-
-
-
-            // function formula() {
-            //   result.value = Math.round((val.value/exchangeRates[valueCurr.value]*exchangeRates[resultCurr.value])*10000)/10000
-            // }
-            // function inversionFormula() {
-            //   val.value = Math.round((result.value/exchangeRates[resultCurr.value]*exchangeRates[valueCurr.value])*10000)/10000
-            // }
 
 
