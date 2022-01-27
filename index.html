@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="style.css" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="style.css" rel="stylesheet" />
     <title>Document</title>
-</head>
-<body>
-    <section>
-        <h1>Конвертер для валют</h1>
-        <form class="form">
-            <div>            
-                <input type="text" id="convertor">
-                <select id="currVal"></select>
-            </div>
-            <div>
-                <input type="text" id="result">
-                <select id="currRes"></select>    
-            </div>
-        </form>
+  </head>
+  <body>
+    <section class="convertor">
+        <div class="container">
+            <h1 class="convertor__title">Конвертер для валют</h1>
+            <form class="convertor__form form">
+              <div class="form__text-field">
+                <input class="form__text-field_input" type="text" id="convertor" />
+                <select class="form__text-field_select" id="currVal"></select>
+              </div>
+              <div class="form__text-field">
+                <input class="form__text-field_input" type="text" id="result" />
+                <select class="form__text-field_select" id="currRes"></select>
+              </div>
+            </form>
+        </div>
     </section>
     <script src="test.js"></script>
-</body>
+  </body>
 </html>
