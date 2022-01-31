@@ -62,8 +62,8 @@
           getId(li, spanTwo)
           result.value = exchange(
             val.value,
-            exchangeRates[spanTwo.textContent],
-            exchangeRates[spanOne.textContent]
+            exchangeRates[spanOne.textContent],
+            exchangeRates[spanTwo.textContent]
           );
         })
         dropdown_two.append(li)
@@ -80,6 +80,7 @@
 
     resultCurr.addEventListener('click', () => {
       dropdown_two.classList.toggle('active')
+    
     })
 
     valueCurr.addEventListener('click', () => {
