@@ -7,6 +7,9 @@
   let dropdown_two = document.getElementById('dropdown_two')
   let spanOne = document.getElementById('spanOne')
   let spanTwo = document.getElementById('spanTwo')
+  let dropOne = document.querySelector('.drop_one')
+  let dropTwo = document.querySelector('.drop_two')
+  let inputsSearch = document.querySelectorAll('.search_world')
   let exchangeRates;
 
   function exchange(amount, valueCur, resultCur) {
@@ -79,14 +82,28 @@
     });
 
     resultCurr.addEventListener('click', () => {
-      dropdown_two.classList.toggle('active')
+      // dropdown_two.classList.toggle('active')
+      // inputsSearch[1].classList.toggle('active')
     
     })
 
     valueCurr.addEventListener('click', () => {
-      dropdown_one.classList.toggle('active')
+      dropOne.classList.toggle('active')
     })
+    inputsSearch.forEach((item)=>{
+      item.addEventListener('input', () => {
+        if(item.value !== ""){
+          let itemOne = document.querySelectorAll('#dropdown_one >.dropdown_item')
+          let itemTwo = document.querySelectorAll('#dropdown_two >.dropdown_item')
+          console.log('ok')
+        }else{
+          console.log('not ok')
 
+        }
+      })
+    })  
+  
+  
 
 }   
  
