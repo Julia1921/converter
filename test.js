@@ -38,6 +38,7 @@
       exchangeRates[spanTwo.textContent],
       exchangeRates[spanOne.textContent]
     );
+    localStorage.setItem('inputTwoText', result.value)
   });
   val.addEventListener("input", () => {
     result.value = exchange(
@@ -45,6 +46,8 @@
       exchangeRates[spanOne.textContent],
       exchangeRates[spanTwo.textContent]
     );
+    localStorage.setItem('inputOneText', val.value)
+
   });
 
   fetch("https://api.exchangerate.host/symbols")
@@ -66,6 +69,10 @@
             exchangeRates[spanOne.textContent],
             exchangeRates[spanTwo.textContent]
           );
+          localStorage.setItem('dropDownOneText', li.textContent)
+          localStorage.setItem('dropDownOneId', li.id)
+        
+        
         });
         dropdown_one.append(li);
       }
@@ -82,6 +89,9 @@
             exchangeRates[spanOne.textContent],
             exchangeRates[spanTwo.textContent]
           );
+          localStorage.setItem('dropDownTwoText', li.textContent)
+          localStorage.setItem('dropDownTwoId', li.id)
+
         });
         dropdown_two.append(li);
       }
@@ -109,4 +119,5 @@
   inputsSearch[1].addEventListener("input", () => {
     searchInDropdownList(inputsSearch[1].value, "#dropdown_two .dropdown_item");
   });
+
 }
