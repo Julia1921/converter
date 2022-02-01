@@ -47,12 +47,12 @@
         li.classList.add('dropdown_item')
         li.addEventListener('click', () => {
           getId(li, spanOne)
+          dropOne.classList.toggle('active')
           result.value = exchange(
             val.value,
             exchangeRates[spanOne.textContent],
             exchangeRates[spanTwo.textContent]
           );
-
         })
         dropdown_one.append(li)
       }
@@ -63,6 +63,7 @@
         li.classList.add('dropdown_item')
         li.addEventListener('click', () => {
           getId(li, spanTwo)
+          dropTwo.classList.toggle('active')
           result.value = exchange(
             val.value,
             exchangeRates[spanOne.textContent],
@@ -82,7 +83,7 @@
     });
 
     resultCurr.addEventListener('click', () => {
-      // dropdown_two.classList.toggle('active')
+      dropTwo.classList.toggle('active')
       // inputsSearch[1].classList.toggle('active')
     
     })
@@ -90,18 +91,29 @@
     valueCurr.addEventListener('click', () => {
       dropOne.classList.toggle('active')
     })
-    inputsSearch.forEach((item)=>{
-      item.addEventListener('input', () => {
-        if(item.value !== ""){
-          let itemOne = document.querySelectorAll('#dropdown_one >.dropdown_item')
-          let itemTwo = document.querySelectorAll('#dropdown_two >.dropdown_item')
-          console.log('ok')
-        }else{
-          console.log('not ok')
-
-        }
+ function searchInDropdownList (input, selector) {
+   if(input !== ""){
+     let item = Array.from(document.querySelectorAll(selector))
+     item.forEach((i) => {
+       if(i.textContent.toLowerCase().includes(input.toLowerCase())){
+         i.style.display = 'block'
+       } else {
+         i.style.display = 'none'
+       }
       })
-    })  
+   }
+ }
+
+    inputsSearch[0].addEventListener('input', () => {
+      searchInDropdownList(inputsSearch[0].value, '#dropdown_one .dropdown_item')
+      }
+
+    )
+    inputsSearch[1].addEventListener('input', () => {
+      searchInDropdownList(inputsSearch[1].value, '#dropdown_two .dropdown_item')
+
+    })
+
   
   
 
