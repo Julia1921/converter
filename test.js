@@ -36,11 +36,9 @@
     }
   }
 
-  function chekLocalStorage(text, span, nameText, nameId) {
+  function chekLocalStorage(text, span, nameId) {
     if (localStorage.length > 0) {
-      if (
-        text.textContent.includes(localStorage.getItem(nameText)) ||  text.id.includes(localStorage.getItem(nameId))
-      ) {
+      if ( text.id.includes(localStorage.getItem(nameId))) {
         getId(text, span);
       }
     }
@@ -81,11 +79,10 @@
             exchangeRates[spanOne.textContent],
             exchangeRates[spanTwo.textContent]
           );
-          localStorage.setItem("dropDownOneText", li.textContent);
           localStorage.setItem("dropDownOneId", li.id);
         });
         dropdown_one.append(li);
-        chekLocalStorage(li, spanOne, "dropDownOneText", "dropDownOneId");  
+        chekLocalStorage(li, spanOne, "dropDownOneId");  
       }
       for (key in abbreviation) {
         let li = document.createElement("li");
@@ -103,7 +100,7 @@
           localStorage.setItem("dropDownTwoId", li.id);
         });
         dropdown_two.append(li);
-        chekLocalStorage(li, spanTwo, '',"dropDownTwoId");
+        chekLocalStorage(li, spanTwo,"dropDownTwoId");
       }
     });
   fetch("https://api.exchangerate.host/latest?base=RUB&places=4")
