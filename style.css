@@ -134,6 +134,7 @@ table {
   color: #000;
   overflow-y: scroll;
   max-height: 400px;
+  background: #fff;
   z-index: 4;
 }
 #dropdown_two {

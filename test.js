@@ -12,6 +12,7 @@
   let inputsSearch = document.querySelectorAll(".search_world");
   let exchangeRates;
 
+  // localStorage.clear()
   function exchange(amount, valueCur, resultCur) {
     return Math.round((amount / valueCur) * resultCur * 10000) / 10000;
   }
@@ -22,13 +23,27 @@
     if (input !== "") {
       let item = Array.from(document.querySelectorAll(selector));
       item.forEach((i) => {
-        console.log(i.id)
-        if (i.textContent.toLowerCase().includes(input.toLowerCase()) || i.id.includes(input.toUpperCase())) {
+        console.log(i.id);
+        if (
+          i.textContent.toLowerCase().includes(input.toLowerCase()) ||
+          i.id.includes(input.toUpperCase())
+        ) {
           i.style.display = "block";
         } else {
           i.style.display = "none";
         }
       });
+    }
+  }
+
+  function chekLocalStorage(text, span, nameText, nameId) {
+    if (localStorage.length > 0) {
+      if (
+        text.textContent.includes(localStorage.getItem(nameText)) ||
+        text.id.includes(localStorage.getItem(nameId))
+      ) {
+        getId(text, span);
+      }
     }
   }
 
@@ -38,7 +53,6 @@
       exchangeRates[spanTwo.textContent],
       exchangeRates[spanOne.textContent]
     );
-    localStorage.setItem('inputTwoText', result.value)
   });
   val.addEventListener("input", () => {
     result.value = exchange(
@@ -46,8 +60,7 @@
       exchangeRates[spanOne.textContent],
       exchangeRates[spanTwo.textContent]
     );
-    localStorage.setItem('inputOneText', val.value)
-
+    localStorage.setItem(val.value, val.value);
   });
 
   fetch("https://api.exchangerate.host/symbols")
@@ -69,12 +82,11 @@
             exchangeRates[spanOne.textContent],
             exchangeRates[spanTwo.textContent]
           );
-          localStorage.setItem('dropDownOneText', li.textContent)
-          localStorage.setItem('dropDownOneId', li.id)
-        
-        
+          localStorage.setItem("dropDownOneText", li.textContent);
+          localStorage.setItem("dropDownOneId", li.id);
         });
         dropdown_one.append(li);
+        chekLocalStorage(li, spanOne, "dropDownOneText", "dropDownOneId");
       }
       for (key in abbreviation) {
         let li = document.createElement("li");
@@ -89,11 +101,11 @@
             exchangeRates[spanOne.textContent],
             exchangeRates[spanTwo.textContent]
           );
-          localStorage.setItem('dropDownTwoText', li.textContent)
-          localStorage.setItem('dropDownTwoId', li.id)
-
+          localStorage.setItem("dropDownTwoText", li.textContent);
+          localStorage.setItem("dropDownTwoId", li.id);
         });
         dropdown_two.append(li);
+        chekLocalStorage(li, spanTwo, "dropDownTwoText", "dropDownTwoId");
       }
     });
   fetch("https://api.exchangerate.host/latest?base=RUB&places=4")
@@ -119,5 +131,4 @@
   inputsSearch[1].addEventListener("input", () => {
     searchInDropdownList(inputsSearch[1].value, "#dropdown_two .dropdown_item");
   });
-
 }
