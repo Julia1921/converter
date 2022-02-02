@@ -39,8 +39,7 @@
   function chekLocalStorage(text, span, nameText, nameId) {
     if (localStorage.length > 0) {
       if (
-        text.textContent.includes(localStorage.getItem(nameText)) ||
-        text.id.includes(localStorage.getItem(nameId))
+        text.textContent.includes(localStorage.getItem(nameText)) ||  text.id.includes(localStorage.getItem(nameId))
       ) {
         getId(text, span);
       }
@@ -60,7 +59,7 @@
       exchangeRates[spanOne.textContent],
       exchangeRates[spanTwo.textContent]
     );
-    localStorage.setItem(val.value, val.value);
+    localStorage.setItem("inputOneText", val.value);
   });
 
   fetch("https://api.exchangerate.host/symbols")
@@ -86,7 +85,7 @@
           localStorage.setItem("dropDownOneId", li.id);
         });
         dropdown_one.append(li);
-        chekLocalStorage(li, spanOne, "dropDownOneText", "dropDownOneId");
+        chekLocalStorage(li, spanOne, "dropDownOneText", "dropDownOneId");  
       }
       for (key in abbreviation) {
         let li = document.createElement("li");
@@ -101,11 +100,10 @@
             exchangeRates[spanOne.textContent],
             exchangeRates[spanTwo.textContent]
           );
-          localStorage.setItem("dropDownTwoText", li.textContent);
           localStorage.setItem("dropDownTwoId", li.id);
         });
         dropdown_two.append(li);
-        chekLocalStorage(li, spanTwo, "dropDownTwoText", "dropDownTwoId");
+        chekLocalStorage(li, spanTwo, '',"dropDownTwoId");
       }
     });
   fetch("https://api.exchangerate.host/latest?base=RUB&places=4")
@@ -114,6 +112,11 @@
     })
     .then((data) => {
       exchangeRates = data.rates;
+      if (localStorage.length > 0) {
+        val.value = localStorage.getItem("inputOneText")
+        result.value = exchange(val.value,exchangeRates[spanOne.textContent],exchangeRates[spanTwo.textContent])
+      }
+
     });
 
   resultCurr.addEventListener("click", () => {
