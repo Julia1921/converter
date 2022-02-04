@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@300;400;500&display=swap');
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -60,8 +59,8 @@ input::-webkit-inner-spin-button {
   box-sizing: border-box;
 }
 body{
-  font-family: 'Roboto', sans-serif;
-  background-color: #707c88;
+  font-family: 'Zen Kaku Gothic Antique', sans-serif;
+  background-color: #3E526B;
   color: #fff;
 }
 body::-webkit-scrollbar{
@@ -75,10 +74,10 @@ body::-webkit-scrollbar{
 .convertor__title {
   text-align: center;
   font-size: 36px;
-  font-weight: 400;
+  font-weight: 500;
   margin: 50px 0 50px;
-  color: #f3be85;
-  text-shadow: 0 0 5px #fff, 0 0 10px #f3be85, 0 0 20px #fff, 0 0 40px #dc7c14, 0 0 80px #dc7c14, 0 0 90px #dc7c14, 0 0 100px #dc7c14, 0 0 150px #dc7c14;
+  color: #D1DEEE;
+  /* text-shadow: 0 0 5px #fff, 0 0 10px #f3be85, 0 0 20px #fff, 0 0 40px #dc7c14, 0 0 80px #dc7c14, 0 0 90px #dc7c14, 0 0 100px #dc7c14, 0 0 150px #dc7c14; */
 
 }
 .convertor__form {
@@ -89,8 +88,8 @@ body::-webkit-scrollbar{
   background-color: #b4bccc;
   border-radius: 10px;
   padding: 30px;
-  border: 1px solid #f3be85;
-  box-shadow: 0px 5px 25px 0px rgba(220, 124, 20, 0.5);
+  /* border: 1px solid #f3be85; */
+  box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.5);
 }
 .form__text-field {
   display: flex;
@@ -104,7 +103,7 @@ body::-webkit-scrollbar{
   width: 100%;
   font-size: 16px;
   font-weight: 400;
-  border: 2px solid #f3be85;
+  border: 2px solid #D1DEEE;
   border-radius: 5px;
   outline: none;
   border-top-right-radius: 0%;
@@ -115,20 +114,20 @@ body::-webkit-scrollbar{
 
 }
 .form__text-field_input:focus {
-  border-color: #f3be85;
+  border-color: #D1DEEE;
   outline: 0;
 }
 .drop_one,
 .drop_two {
   border: 1px solid #fff; 
-  box-shadow: 0px 5px 25px 0px rgba(220, 124, 20, 0.5);
+  box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.5);
   position: absolute;
   width: 230px;
   border-radius: 10px;
   padding: 8px;
   right: 0;
   top: 55px;
-  background-color: rgba(220, 124, 20, 0.5);
+  background-color: rgba(106, 140, 184, 0.5);
   z-index: 10;
   overflow-y: scroll;
 }
@@ -143,7 +142,7 @@ body::-webkit-scrollbar{
 .form__btn_dropdown {
   display: inline-block;
   min-width: 100px;
-  border: 2px solid #f3be85;
+  border: 2px solid #D1DEEE;
   text-align: center;
   border-radius: 5px;
   border-top-left-radius: 0%;
@@ -161,8 +160,8 @@ body::-webkit-scrollbar{
 }
 .form__btn_dropdown:focus, 
 .form__btn_dropdown:hover{
-  border-color: #f3be85;
-  background-color: #f3be85;
+  border-color: #D1DEEE;
+  background-color: rgba(106, 140, 184, 0.5);;
 }
 
 .dropdown_list {
@@ -180,7 +179,7 @@ body::-webkit-scrollbar{
   transition: all linear 0.5s;
 }
 .dropdown_item:hover {
-  background: #dc7c14;
+  color: #88B3EB;
 }
 
 .search_world {

@@ -20,19 +20,24 @@
     span.textContent = el.id;
   }
   function searchInDropdownList(input, selector) {
-    if (input !== "") {
+    if (input.value !== "" && /^[a-zA-Z]+$/.test(input.value)) {
       let item = Array.from(document.querySelectorAll(selector));
       item.forEach((i) => {
-        console.log(i.id);
         if (
-          i.textContent.toLowerCase().includes(input.toLowerCase()) ||
-          i.id.includes(input.toUpperCase())
+          i.textContent.toLowerCase().includes(input.value.toLowerCase()) ||
+          i.id.includes(input.value.toUpperCase())
         ) {
-          i.style.display = "block";
+          i.classList.remove('active')
         } else {
-          i.style.display = "none";
+          i.classList.add('active')
         }
       });
+    } 
+    if (/^[а-яА-Я]+$/.test(input.value)){
+      input.nextElementSibling.classList.remove('active')
+    } else {
+      input.nextElementSibling.classList.add('active')
+
     }
   }
 
@@ -41,20 +46,6 @@
       if ( text.id.includes(localStorage.getItem(nameId))) {
         getId(text, span);
       }
-    }
-  }
-
-  function validations (input) {
-    if (!/^[a-zA-Z]+$/.test(input.value)) {
-      input.nextElementSibling.classList.remove('active')
-      document.querySelectorAll('.dropdown_item').forEach( item => {
-        item.style.display = 'block';
-      })
-    } else{
-      input.nextElementSibling.classList.add('active')
-    }
-    if (input.value == ''){
-      input.nextElementSibling.classList.add('active')
     }
   }
 
@@ -140,11 +131,11 @@
   });
 
   inputsSearch[0].addEventListener("input", () => {
-    validations(inputsSearch[0])
-    searchInDropdownList(inputsSearch[0].value, "#dropdown_one .dropdown_item");
+    // validations(inputsSearch[0])
+    searchInDropdownList(inputsSearch[0], "#dropdown_one .dropdown_item");
   });
   inputsSearch[1].addEventListener("input", () => {
-    validations(inputsSearch[1])
-    searchInDropdownList(inputsSearch[1].value, "#dropdown_two .dropdown_item");
+    // validations(inputsSearch[1])
+    searchInDropdownList(inputsSearch[1], "#dropdown_two .dropdown_item");
   });
 }
