@@ -44,6 +44,20 @@
     }
   }
 
+  function validations (input) {
+    if (!/^[a-zA-Z]+$/.test(input.value)) {
+      input.nextElementSibling.classList.remove('active')
+      document.querySelectorAll('.dropdown_item').forEach( item => {
+        item.style.display = 'block';
+      })
+    } else{
+      input.nextElementSibling.classList.add('active')
+    }
+    if (input.value == ''){
+      input.nextElementSibling.classList.add('active')
+    }
+  }
+
   result.addEventListener("input", () => {
     val.value = exchange(
       result.value,
@@ -126,9 +140,11 @@
   });
 
   inputsSearch[0].addEventListener("input", () => {
+    validations(inputsSearch[0])
     searchInDropdownList(inputsSearch[0].value, "#dropdown_one .dropdown_item");
   });
   inputsSearch[1].addEventListener("input", () => {
+    validations(inputsSearch[1])
     searchInDropdownList(inputsSearch[1].value, "#dropdown_two .dropdown_item");
   });
 }
