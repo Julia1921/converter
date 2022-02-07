@@ -9,7 +9,8 @@
   let spanTwo = document.getElementById("spanTwo");
   let dropOne = document.querySelector(".drop_one");
   let dropTwo = document.querySelector(".drop_two");
-  let inputsSearch = document.querySelectorAll(".search_world");
+  let inputsSearchOne =  document.getElementById("search_word_one");
+  let inputsSearchTwo =  document.getElementById("search_word_two");
   let exchangeRates;
 
   // localStorage.clear()
@@ -20,8 +21,8 @@
     span.textContent = el.id;
   }
   function searchInDropdownList(input, selector) {
-      let item = Array.from(document.querySelectorAll(selector));
-      item.forEach((i) => {
+    let item =[...document.getElementById(selector).childNodes];
+    for (const i of item) {
         if (
           i.textContent.toLowerCase().includes(input.toLowerCase()) ||
           i.id.includes(input.toUpperCase())
@@ -30,8 +31,7 @@
         } else {
           i.classList.add('active')
         }
-      });
-    
+      };
   }
   
 
@@ -117,17 +117,16 @@
 
   resultCurr.addEventListener("click", () => {
     dropTwo.classList.toggle("active");
-    // inputsSearch[1].classList.toggle('active')
   });
 
   valueCurr.addEventListener("click", () => {
     dropOne.classList.toggle("active");
   });
 
-  inputsSearch[0].addEventListener("input", () => {
-    searchInDropdownList(inputsSearch[0].value, "#dropdown_one .dropdown_item");
+  inputsSearchOne.addEventListener("input", () => {
+    searchInDropdownList(inputsSearchOne.value, 'dropdown_one');
   });
-  inputsSearch[1].addEventListener("input", () => {
-    searchInDropdownList(inputsSearch[1].value, "#dropdown_two .dropdown_item");
+  inputsSearchTwo.addEventListener("input", () => {
+    searchInDropdownList(inputsSearchTwo.value, 'dropdown_two');
   });
 }
