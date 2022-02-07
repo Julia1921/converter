@@ -20,26 +20,20 @@
     span.textContent = el.id;
   }
   function searchInDropdownList(input, selector) {
-    if (input.value !== "" && /^[a-zA-Z]+$/.test(input.value)) {
       let item = Array.from(document.querySelectorAll(selector));
       item.forEach((i) => {
         if (
-          i.textContent.toLowerCase().includes(input.value.toLowerCase()) ||
-          i.id.includes(input.value.toUpperCase())
+          i.textContent.toLowerCase().includes(input.toLowerCase()) ||
+          i.id.includes(input.toUpperCase())
         ) {
           i.classList.remove('active')
         } else {
           i.classList.add('active')
         }
       });
-    } 
-    if (/^[а-яА-Я]+$/.test(input.value)){
-      input.nextElementSibling.classList.remove('active')
-    } else {
-      input.nextElementSibling.classList.add('active')
-
-    }
+    
   }
+  
 
   function chekLocalStorage(text, span, nameId) {
     if (localStorage.length > 0) {
@@ -131,11 +125,9 @@
   });
 
   inputsSearch[0].addEventListener("input", () => {
-    // validations(inputsSearch[0])
-    searchInDropdownList(inputsSearch[0], "#dropdown_one .dropdown_item");
+    searchInDropdownList(inputsSearch[0].value, "#dropdown_one .dropdown_item");
   });
   inputsSearch[1].addEventListener("input", () => {
-    // validations(inputsSearch[1])
-    searchInDropdownList(inputsSearch[1], "#dropdown_two .dropdown_item");
+    searchInDropdownList(inputsSearch[1].value, "#dropdown_two .dropdown_item");
   });
 }
