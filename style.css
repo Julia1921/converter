@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@300;400;500&display=swap');
-/*Сброс стилей*/
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -53,8 +52,7 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0; 
 }
-/*------------------------------------*/
-/*Общие стили*/
+
 *,
 *::before,
 *::after {
@@ -73,19 +71,15 @@ body::-webkit-scrollbar{
   padding: 0 15px;
   margin: 0 auto;
 }
-.active {
-  display: none;
-
-}
-/*Стили для заголовка*/
 .convertor__title {
   text-align: center;
   font-size: 36px;
   font-weight: 500;
   margin: 50px 0 50px;
   color: #D1DEEE;
+  /* text-shadow: 0 0 5px #fff, 0 0 10px #f3be85, 0 0 20px #fff, 0 0 40px #dc7c14, 0 0 80px #dc7c14, 0 0 90px #dc7c14, 0 0 100px #dc7c14, 0 0 150px #dc7c14; */
+
 }
-/*стили для конвертора*/
 .convertor__form {
   display: flex;
   align-items: center;
@@ -94,9 +88,9 @@ body::-webkit-scrollbar{
   background-color: #b4bccc;
   border-radius: 10px;
   padding: 30px;
+  /* border: 1px solid #f3be85; */
   box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.5);
 }
-/*Стили для полей ввода и вывода значений*/
 .form__text-field {
   display: flex;
   flex-wrap: nowrap;
@@ -123,6 +117,28 @@ body::-webkit-scrollbar{
   border-color: #D1DEEE;
   outline: 0;
 }
+.drop_one,
+.drop_two {
+  border: 1px solid #fff; 
+  box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.5);
+  position: absolute;
+  width: 230px;
+  border-radius: 10px;
+  padding: 8px;
+  right: 0;
+  top: 55px;
+  background-color: rgba(106, 140, 184, 0.5);
+  z-index: 10;
+  overflow-y: scroll;
+}
+.drop_one::-webkit-scrollbar,
+.drop_two::-webkit-scrollbar {
+  width: 0px;
+}
+
+.drop_two{
+  z-index: 9;
+}
 .form__btn_dropdown {
   display: inline-block;
   min-width: 100px;
@@ -148,33 +164,13 @@ body::-webkit-scrollbar{
   background-color: rgba(106, 140, 184, 0.5);;
 }
 
-/*Стили для списков с названием валют*/
-.drop_one,
-.drop_two {
-  border: 1px solid #fff; 
-  box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.5);
-  position: absolute;
-  width: 230px;
-  border-radius: 10px;
-  padding: 8px;
-  right: 0;
-  top: 55px;
-  background-color: rgba(106, 140, 184, 0.5);
-  z-index: 10;
-  overflow-y: scroll;
-}
-.drop_one::-webkit-scrollbar,
-.drop_two::-webkit-scrollbar {
-  width: 0px;
-}
-
-.drop_two{
-  z-index: 9;
-}
-
 .dropdown_list {
   list-style: none;
   max-height: 350px;
+}
+.active {
+  display: none;
+
 }
 .dropdown_item {
   padding: 10px 0;
@@ -185,7 +181,7 @@ body::-webkit-scrollbar{
 .dropdown_item:hover {
   color: #88B3EB;
 }
-/*Стили для строки поиска валют*/
+
 .search_word {
   display: block;
   width: 100%;
